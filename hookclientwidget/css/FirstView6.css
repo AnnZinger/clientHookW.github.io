@@ -1,0 +1,702 @@
+/*Сниппет для скрытия элементов, но позволяющий получать доступ для сео(например скрывать заголовки которых нет в дизайне)*/
+
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/*Css Переменные с цветами*/
+
+:root{
+    --main-color-white: #fff;
+    --main-color-black: #333333;
+
+    --main-color-gray2: #b2b2b2;
+    --main-color-gray: #ececec;
+    --main-color-gray-opacity:rgba(236,236,236,0.5);
+
+    --main-shadow-color: #d6d6d6;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+}
+
+button{
+    border: none;
+    background: none;
+}
+
+/*Хэдэр*/
+
+.main-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+
+    background: white;
+    z-index: 99;
+
+    transition: all ease-in 0.3s;
+}
+
+.dropShadow{
+    transition: all ease-in 0.3s;
+    box-shadow: 0 5px 16px -4px var(--main-shadow-color);
+
+    z-index: 1000;
+}
+
+.header-brand img{
+    width: 35px;
+    height: 35px;
+}
+
+.header-brand p{
+    font-weight: bold;
+}
+
+/*Выборанный мастер*/
+
+.master-picked{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.master-avatar{
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.master-picked-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 40px;
+    margin: 80px 0 20px 0;
+
+    border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);
+}
+
+.master-picked-block h2{
+    width: 100%;
+    margin: 0;
+
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+
+}
+
+.master-picked-block button {
+    display: flex;
+    padding: 0 8px 0 0;
+}
+
+.master-picked-block img {
+    width: 14px;
+    height: 14px;
+}
+
+.master-picked-card{
+    display: flex;
+
+    width: 90vw;
+    height: 60px;
+    margin: 0 0 20px 0;
+
+    /*border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);*/
+}
+
+.master-picked-card-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    margin: 0 0 0 3%;
+}
+
+.master-picked-card-info p{
+    margin: 0;
+
+}
+
+.master-picked-card-info button{
+    display: flex;
+    padding: 0 10px 0 0;
+}
+
+.master-picked-card-info button img{
+    width: 13px;
+    height: 13px;
+}
+
+.master-picked-card-quick-info{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.master-picked-quick-time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 0;
+}
+
+.master-picked-quick-time p{
+    display: flex;
+    align-items: flex-end;
+
+    font-size: 0.75rem;
+
+    margin: 0 10px 0 0;
+}
+
+.master-picked-quick-time p img{
+    margin: 0 5px 0 0;
+}
+/*Кнопки выбора (скрыты в данном вью)*/
+
+.choise-buttons{
+    margin: 80px 0 25px 0;
+    display: none;
+
+}
+
+.choise-buttons-list{
+    display: flex;
+    justify-content: space-around;
+
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.choise-buttons-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40vw;
+    height: 36px;
+
+    padding: 0;
+    margin: 0;
+
+    background: var(--main-color-white);
+    border: none;
+    outline: none;
+
+    text-transform: uppercase;
+}
+
+.choise-buttons-item:active{
+    background-color: var(--main-color-black);
+    color: var(--main-color-white);
+}
+
+.choise-buttons-item:focus{
+    border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);
+}
+
+.active{
+    border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);
+}
+
+/*Панель поиска мастера*/
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 60px;
+
+    background-color: var(--main-color-gray);
+}
+
+.search-input{
+    display: flex;
+    justify-content: space-between;
+
+    width: 90vw;
+}
+
+.search-input input{
+    background: none;
+    border: none;
+}
+
+.choise-bar p{
+    font-size: 1rem;
+
+    padding: 0 20px;
+}
+
+.choise-bar button{
+    padding: 0 20px;
+}
+
+.choise-buttons-item{
+    font-size: 0.875rem;
+}
+
+/*Карточки мастеров*/
+
+.master-picked-block{
+    height: 40px;
+}
+
+.master-cards{
+    display: flex;
+
+    padding:10px 0 70px 0;
+
+    background: var(--main-color-gray-opacity);
+}
+
+.master-cards-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.master-cards-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 45vw;
+    height: 61vw;
+    margin: 10px 5px;
+
+    box-shadow: 0 4px 25px 0 rgba(0,0,0,0.14);
+    background: var(--main-color-white);
+}
+
+.master-card-topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+    margin: 8px auto 0 auto;
+}
+
+.master-card-topbar button{
+    padding: 0;
+
+}
+
+.master-card-topbar button img{
+    width: 16px;
+
+}
+
+.rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 22px;
+
+
+    background: var(--main-color-gray-opacity);
+    border-radius: 14px;
+
+}
+
+.rating img{
+    margin: 0 1px 2px 0;
+}
+
+.rating p{
+    font-size: 0.625rem;
+    margin:0;
+}
+
+.master-card-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.master-card-info img{
+    width: 40%;
+    height: auto;
+    border-radius: 50%;
+
+    margin: -10px 0 0 0;
+}
+
+.master-card-info h3{
+    font-size: 0.8125rem;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 8px 5px 8px 5px;
+
+    text-align: center;
+}
+
+.master-card-info p{
+    font-size: 0.6875rem;
+    margin: 0 5px 8px 5px;
+
+    text-align: center;
+
+    color: var(--main-color-gray2);
+}
+
+
+.master-card-bottombar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 0;
+
+    border-top: 1px solid var(--main-color-gray);
+}
+
+.master-card-bottombar button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 22px;
+
+    font-size: 0.625rem;
+
+    padding: 0 5px;
+    margin: 10px 0;
+
+    background: var(--main-color-gray-opacity);
+    border-radius: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.quick-write-topbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+
+    margin: 11px auto 6px auto;
+}
+
+.quick-write-topbar p{
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+
+.quick-write-topbar button{
+    display: flex;
+    padding: 0;
+
+}
+
+.quick-write-topbar button img{
+    height: 11px;
+}
+
+
+.gg{
+    background: grey !important;
+    color: white;
+}
+
+
+
+.quick-write-dates{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 120px;
+
+    overflow: auto;
+}
+
+.quick-write-dates p{
+    font-size: 0.75rem;
+    margin: 0 0 0 8px;
+}
+
+
+.quick-write-dates button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 22px;
+
+    font-size: 0.625rem;
+
+    padding: 0 5px;
+    margin: 0 4px 8px 4px;;
+
+    background: var(--main-color-gray-opacity);
+    border-radius: 14px;
+}
+
+.quick-write-dates button img{
+    height: 12px;
+}
+
+.quick-write-bottombar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 0;
+
+    border-top: 1px solid var(--main-color-gray);
+}
+
+.quick-write-bottombar button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 22px;
+
+    font-size: 0.625rem;
+
+    padding: 0 5px;
+    margin: 10px 4px;
+
+    background: var(--main-color-gray-opacity);
+    border-radius: 14px;
+}
+
+
+/*Нижнее меню*/
+
+.main-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-color-white);
+    width: 100vw;
+    height: 55px;
+    color: var(--main-color-black);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    box-shadow: 0 -5px 16px -4px var(--main-shadow-color);
+}
+
+.mobileNavbar ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobileNavbar li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.mobileNavbar li a{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+
+    color: var(--main-color-black);
+    font-size: 0.625rem;
+    margin: 0;
+}
+
+.mobileNavbar li img{
+    margin: 0 0 5px 0;
+}
+
+/* Адптив для блоков */
+
+
+
+
+
+@media(min-width: 375px){
+    .master-card-info img{
+        width: 55%;
+    }
+
+    .quick-write-dates {
+        height: 140px;
+    }
+
+    .quick-write-dates button{
+        margin: 0 8px 6px 8px;
+    }
+}
+
+
+@media(min-width: 400px){
+    .master-card-info img{
+        width: 60%;
+    }
+
+    .quick-write-dates {
+        height: 160px;
+    }
+
+    .quick-write-dates button{
+        margin: 0 8px 6px 8px;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+
+    /* Шрифты */
+    html{
+        font-size: 24px;
+    }
+
+    /* Хэдэр */
+    .header-brand{
+        height: 80px;
+    }
+    .header-brand img {
+        width: 65px;
+        height: 65px;
+    }
+
+    /* Кнопки выбора */
+    .choise-buttons {
+        margin: 120px 0 40px 0;
+    }
+    .choise-buttons-item{
+        height: 56px;
+    }
+    .choise-buttons-item:focus{
+        box-shadow:  6px 6px 0 var(--main-shadow-color);
+    }
+    .active{
+        box-shadow:  6px 6px 0 var(--main-shadow-color);
+    }
+    .master-picked-block{
+        height: 60px;
+        box-shadow:  6px 6px 0 var(--main-shadow-color);
+    }
+    .master-picked-block img {
+        width: 18px;
+        height: 18px;
+    }
+    .master-cards{
+        margin: 10px 0 100px 0;
+    }
+
+    /* Панель поиска */
+    .search-bar {
+        height: 80px;
+    }
+    .search-input input{
+        width: 60vw;
+    }
+    .search-input img{
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Карточки мастеров */
+    .master-cards-wrapper{
+        margin: 20px 0;
+    }
+    .card-list-item-avatar{
+        width: 85px;
+        height: 85px;
+    }
+    .main-footer{
+        height: 80px;
+    }
+    .card-list-item-addbutton img{
+        width: 35px;
+        height: 35px;
+    }
+    .mobileNavbar li img{
+        margin: 0 0 8px 0;
+    }
+
+    .mobileNavbar img{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (min-width: 960px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+
+

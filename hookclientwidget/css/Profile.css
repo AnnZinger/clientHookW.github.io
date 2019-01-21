@@ -1,0 +1,409 @@
+/*Сниппет для скрытия элементов, но позволяющий получать доступ для сео(например скрывать заголовки которых нет в дизайне)*/
+
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/*Css Переменные с цветами*/
+
+:root{
+    --main-color-white: #fff;
+    --main-color-black: #333333;
+
+    --main-color-gray2: #b2b2b2;
+    --main-color-gray: #ececec;
+
+    --main-shadow-color: #d6d6d6;
+}
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+}
+
+button{
+    border: none;
+    background: none;
+}
+
+/*Хэдэр*/
+
+.profile-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+
+    background: white;
+    z-index: 99;
+
+    transition: all ease-in 0.3s;
+}
+
+.dropShadow{
+    transition: all ease-in 0.3s;
+    box-shadow: 0 5px 16px -4px var(--main-shadow-color);
+
+    z-index: 1000;
+}
+
+.profile-bar button{
+    display: flex;
+    align-items: center;
+    padding: 0 15px 0 0;
+}
+
+.profile-bar img{
+    width: 14px;
+    height: auto;
+    justify-self: flex-end;
+}
+
+.profile-bar p{
+    font-weight: normal;
+    margin: 0 -34px 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+.container{
+    padding: 80px 0 0 0;
+}
+
+
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 0 40px 0;
+}
+
+.profile-avatar{
+    width: 150px;
+    height: auto;
+
+    box-shadow:  6px 6px 0 var(--main-shadow-color);
+
+}
+
+/*Кнопки выбора*/
+
+.choise-buttons{
+    margin: 0 0 25px 0;
+}
+
+.choise-buttons-list{
+    display: flex;
+    justify-content: space-around;
+
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.choise-buttons-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40vw;
+    height: 36px;
+
+    padding: 0;
+    margin: 0;
+
+    background: var(--main-color-white);
+    border: none;
+    outline: none;
+
+}
+
+.choise-buttons-item:active{
+    background-color: var(--main-color-black);
+    color: var(--main-color-white);
+}
+
+.choise-buttons-item:focus{
+    border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);
+}
+
+.active{
+    border: 1px solid var(--main-color-gray2);
+    box-shadow:  4px 4px 0 var(--main-shadow-color);
+}
+
+
+
+/*Карточки мастеров*/
+
+.profile-cards{
+    margin: 10px 0 70px 0;
+}
+
+.card-list-item-addbutton{
+    display: flex;
+    padding: 0 10px 0 10px;
+    border: none;
+}
+
+.card-list-item-addbutton img{
+    width: 25px;
+    height: 25px;
+}
+
+.card-list{
+    display: flex;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+}
+
+.card-list-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-left: 0.5px solid var(--main-color-gray2);
+}
+
+.card-list-item-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90vw;
+}
+
+.card-list-item-info{
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+}
+
+.card-list-item-avatar{
+    width: 65px;
+    height: 65px;
+
+    box-shadow: 4px 4px 0 var(--main-shadow-color);
+}
+
+.card-list-item-name{
+    font-size: 1rem;
+
+    margin: 0;
+}
+
+.card-list-item-specialisation{
+    margin: 8px 0 5px 0;
+    font-size: 0.75rem;
+
+    color: var(--main-color-black);
+}
+
+
+
+.profile-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-cards-wrapper{
+    border-left: 1px solid var(--main-color-gray2);
+    margin: 18px 0;
+}
+
+.profile-cards-info-avatar{
+    display: flex;
+    align-items: center;
+}
+
+.profile-cards-info-text{
+    margin: 0 0 0 15px;
+}
+
+.profile-cards-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    margin: 0 0 0 10px;
+}
+
+.card-list-item-quickwrite-dates{
+    display: flex;
+}
+
+/*Нижнее меню*/
+
+.main-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-color-white);
+    width: 100vw;
+    height: 55px;
+    color: var(--main-color-black);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    box-shadow: 0 -5px 16px -4px var(--main-shadow-color);
+}
+
+.mobileNavbar ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobileNavbar li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.mobileNavbar li a{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+
+    color: var(--main-color-black);
+    font-size: 0.625rem;
+    margin: 0;
+}
+
+.mobileNavbar li img{
+    margin: 0 0 5px 0;
+}
+
+/* Адптив для блоков */
+
+@media (min-width: 768px) {
+
+    /* Шрифты */
+
+    html{
+        font-size: 24px;
+    }
+
+    /* Хэдэр */
+
+    .header-brand{
+        height: 80px;
+    }
+    .header-brand img {
+        width: 65px;
+        height: 65px;
+    }
+
+    /* Кнопки выбора */
+
+    .choise-buttons {
+        margin: 120px 0 40px 0;
+    }
+    .choise-buttons-item{
+        height: 56px;
+    }
+    .choise-buttons-item:focus{
+        box-shadow:  6px 6px 0 var(--main-shadow-color);
+    }
+    .active{
+        box-shadow:  6px 6px 0 var(--main-shadow-color);
+    }
+
+    .master-cards{
+        margin: 10px 0 100px 0;
+    }
+
+    /* Панель поиска */
+
+    .search-bar {
+        height: 80px;
+    }
+    .search-input input{
+        width: 60vw;
+    }
+    .search-input img{
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Карточки мастеров */
+
+    .master-cards-wrapper{
+        margin: 20px 0;
+    }
+    .card-list-item-avatar{
+        width: 85px;
+        height: 85px;
+    }
+    .main-footer{
+        height: 80px;
+    }
+    .card-list-item-addbutton img{
+        width: 35px;
+        height: 35px;
+    }
+    .mobileNavbar li img{
+        margin: 0 0 8px 0;
+    }
+
+    .mobileNavbar img{
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+@media (min-width: 960px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+
+
